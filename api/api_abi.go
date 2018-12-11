@@ -69,12 +69,6 @@ func printLogByABI(log *types.Log, parsed abi.ABI) (string, error) {
 		}
 	}
 
-	var err error
-	seelelog.Args, err = parsed.Events[seelelog.Event].Inputs.UnpackValues(log.Data)
-	if err != nil {
-		return "", err
-	}
-
 	encoded, err := json.Marshal(seelelog)
 	if err != nil {
 		return "", err
